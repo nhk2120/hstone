@@ -23,7 +23,7 @@ For example, user is able to get all the classes names and their Ids by running 
 
 Then the output will be saved as a data frame in the global environment for users to conviniently view them as they use other function in `hstone` package.
 
-```{r eval=FALSE}
+```{r eval = FALSE}
 library(hstone)
 hstone::hsmeta(id = Sys.getenv("id"), secret = Sys.getenv("secret"), give = "classes")
 ```
@@ -40,7 +40,7 @@ The classifications include classes, cost of the mana, attack, health, rarities,
 
 Moreover, users will have an option to sort the cards by either attack, health, or cost of the mana for their convenience.
 
-```{r}
+```{r eval = FALSE}
 hstone::hscard(id = Sys.getenv("id"), secret = Sys.getenv("secret"), rarity = "legendary", type = "spell", orderBy = "manaCost")
 ```
 
@@ -52,7 +52,7 @@ The deck can be searched easily with the deck code that is widely used in almost
 
 For example, metastat.net provides various deckcodes for all kinds of decks.
 
-```{r}
+```{r eval = FALSE}
 hstone::hsdeck(id = Sys.getenv("id"), secret = Sys.getenv("secret"), deckcode = "AAECAaoIAqH4AualAw7TAeAGkwn6qgL28AKP+wKc/wKMhQP2igO0lwPGmQP0mQPUpQPYqQMA")
 ```
 
@@ -64,7 +64,7 @@ After running either `hsdeck` and `hscard` function, users will have data frame 
 
 Users can then use `hsavgmana` function to get the average mana cost of either the cards or deck.
 
-```{r}
+```{r eval = FALSE}
 hstone::hsavgmana(type = "Deck")
 ```
 
@@ -76,7 +76,7 @@ The `hsexpectdeck` function expects what the concept of deck is that was searche
 
 This function will give users either one of four concepts of the deck that are most famous in the Hearthstone game: Highlander, Winnie, Aggro, and Control.
 
-```{r}
+```{r eval = FALSE}
 hstone::hsexpectdeck()
 ```
 
@@ -93,7 +93,7 @@ strongest decks available.
 
 If this happens, simply run the function again after a day or two to get the most recent top tier decks.
 
-```{r}
+```{r eval = FALSE}
 hstone::hstopdeckcodes()
 ```
 
@@ -109,7 +109,7 @@ In addtion, users have an option to choose whether they want only the most used 
 
 If users do not type anything, it will give all the cards and the number of times they were all used.
 
-```{r}
+```{r eval = FALSE}
 hscardused(id = Sys.getenv("id"), secret = Sys.getenv("secret"), used = "high")
 ```
 
