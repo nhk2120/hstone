@@ -1,0 +1,36 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# hstone
+
+The goal of hstone is to provide useful data and analysis on cards and decks in order for users to easily search the cards and decks they want and retrive the best decks in the current season, ultimately boosting the win-rate in Hearthstone. 
+
+
+## Installation
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("nhk2120/hstone")
+```
+
+
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(hstone)
+hscard(id = Sys.getenv("id"), secret = Sys.getenv("secret"), class = "mage", manaCost = 5, attack = 5, orderBy = "health")
+hsdeck(id = Sys.getenv("id"), secret = Sys.getenv("secret"), deckcode = "AAECAaoIAqH4AualAw7TAeAGkwn6qgL28AKP+wKc/wKMhQP2igO0lwPGmQP0mQPUpQPYqQMA")
+```

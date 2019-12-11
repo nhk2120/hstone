@@ -1,0 +1,115 @@
+---
+title: "The HSTONE Package Explained"
+author: "Nam Hee Kim"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The HSTONE Package Explained}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("./files/a.PNG")
+```
+
+The `hstone` package contains seven functions: `hsmeta()`, `hscard()`, `hsdeck()`, `hsavgmana()`, `hsexpectdeck()`, `hstopdeckcodes()`, and `hscardused()`.
+
+## `hsmeta` Function
+  
+The `hsmeta` retrieves various meta data for Hearthstone cards classifications.
+
+For example, user is able to get all the classes names and their Ids by running this function. There are other classifications as well such as minion types, card types, and rarities.
+
+Then the output will be saved as a data frame in the global environment for users to conviniently view them as they use other function in `hstone` package.
+
+```{r eval=FALSE}
+library(hstone)
+hstone::hsmeta(id = Sys.getenv("id"), secret = Sys.getenv("secret"), give = "classes")
+```
+
+## `hscard` Function
+
+The `hscard` function retrives various card data based on the chosen classifications by the users. 
+
+For example, users will be able to retrive all the cards that has 2 health, 4 attack, and text including "Battlecry."
+
+This will help users to search for cards quickly and conveniently for the wanted effects or values of the cards.
+
+The classifications include classes, cost of the mana, attack, health, rarities, type of the cards, minion types, and texts.
+
+Moreover, users will have an option to sort the cards by either attack, health, or cost of the mana for their convenience.
+
+```{r}
+hstone::hscard(id = Sys.getenv("id"), secret = Sys.getenv("secret"), rarity = "legendary", type = "spell", orderBy = "manaCost")
+```
+
+## `hsdeck` Function
+
+The `hsdeck` function retrieves all the cards deck are included in the deck that is searched.
+
+The deck can be searched easily with the deck code that is widely used in almost every Hearthstone related media.
+
+For example, metastat.net provides various deckcodes for all kinds of decks.
+
+```{r}
+hstone::hsdeck(id = Sys.getenv("id"), secret = Sys.getenv("secret"), deckcode = "AAECAaoIAqH4AualAw7TAeAGkwn6qgL28AKP+wKc/wKMhQP2igO0lwPGmQP0mQPUpQPYqQMA")
+```
+
+## `hsavgmana` Function
+
+The `hsavgmana` function relies on the `hsdeck` and `hscard` function. 
+
+After running either `hsdeck` and `hscard` function, users will have data frame that is saved to their global environment in R.
+
+Users can then use `hsavgmana` function to get the average mana cost of either the cards or deck.
+
+```{r}
+hstone::hsavgmana(type = "Deck")
+```
+
+## `hsexpectdeck` Function
+
+The `hsexpectdeck` function relies on `hsdeck` function.
+
+The `hsexpectdeck` function expects what the concept of deck is that was searched by `hsdeck` function.
+
+This function will give users either one of four concepts of the deck that are most famous in the Hearthstone game: Highlander, Winnie, Aggro, and Control.
+
+```{r}
+hstone::hsexpectdeck()
+```
+
+## `hstopdeckcodes` Function
+
+This is a very useful and convenient function for every Hearthstone players.
+
+By running this function, users will be able to retrive the current strongest decks in the game.
+
+It will be saved as a data frame inclduing the deck name and the deck code that are retrived from metastats.net.
+
+When the warning that says, there are no available decks, it means that the new season of Hearthstone just started and there are not yet
+strongest decks available.
+
+If this happens, simply run the function again after a day or two to get the most recent top tier decks.
+
+```{r}
+hstone::hstopdeckcodes()
+```
+
+## `hscardused` Function
+
+This function relies on `hstopdeckcodes`. Because of this, when the new season starts, this function will also not work.
+
+Once users can run `hstopdeckcodes` again and retrieve the top tier decks, this function counts the most used cards in those top tier decks.
+
+Users can use this information to structure the decks with the strongest and most useful cards that are currently used.
+
+In addtion, users have an option to choose whether they want only the most used cards to least used cards by typing either "high", "medium", or "low" in used argument.
+
+If users do not type anything, it will give all the cards and the number of times they were all used.
+
+```{r}
+hscardused(id = Sys.getenv("id"), secret = Sys.getenv("secret"), used = "high")
+```
+

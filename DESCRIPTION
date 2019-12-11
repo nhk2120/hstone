@@ -1,0 +1,27 @@
+Package: hstone
+Type: Package
+Title: Retrieve and analyze Hearthstone cards and decks
+Version: 0.1.0
+Authors@R: person("Nam Hee", "Kim", email = "nhk2120@columbia.edu",
+  role = c("aut", "cre"))
+Description: You can obtain various useful information that will help you in Hearth Stone. 
+   Get information on all the Hearthstone cards with your choice of card classification and analyze the deck with deck codes.
+   You can get the average mana cost for the cards and the deck you searched. You can also expect the type of deck.
+   In addition, it is extremely easy to get top tier deckcodes by running a simple function and retrieve the most used cards from the top tier decks.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    tidyverse,
+    dplyr,
+    httr,
+    rvest,
+    jsonlite,
+    stringr,
+    xml2
+RoxygenNote: 6.1.99.9001
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 2.1.0)
+VignetteBuilder: knitr
