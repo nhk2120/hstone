@@ -10,7 +10,7 @@
 #' @examples
 #' hsavgmana(type = "Deck")
 #' hsavgmana(type = "Card")
-#' @import dplyr httr rvest jsonlite stringr tidyverse
+#' @import tidyverse dplyr httr rvest jsonlite stringr tidyr
 #' @export
 
 
