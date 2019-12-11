@@ -15,6 +15,14 @@ knitr::include_graphics("./files/a.PNG")
 
 The `hstone` package contains seven functions: `hsmeta()`, `hscard()`, `hsdeck()`, `hsavgmana()`, `hsexpectdeck()`, `hstopdeckcodes()`, and `hscardused()`.
 
+## About Client Id and Secret used in `hstone` package
+
+Many of the functions in `hstone` package required client id and client secret from Blizzard.
+
+You can obtain your Client id and secret from here: `https://develop.battle.net/documentation/guides/getting-started`
+
+After obtaining the client id and secret, I recommend to save it in the system environment file for your safety.
+
 ## `hsmeta` Function
   
 The `hsmeta` retrieves various meta data for Hearthstone cards classifications.
